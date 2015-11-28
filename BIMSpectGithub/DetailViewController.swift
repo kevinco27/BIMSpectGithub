@@ -12,30 +12,35 @@ class DetailViewController: UITableViewController {
 
     
     @IBOutlet weak var tableVIew: UITableView!
-    var detailSpectItem : spectItem!
+    var detailSpectItem : SpectItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //receive the notification when specItem is changed
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "specItemSelection:", name: "specItemChanged" , object: nil)
+    }
+    
+    func specItemSelection(noti : NSNotification){
+        detailSpectItem = noti.object as! SpectItem
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+       
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+       
         return detailSpectItem.item.count
-        //return item.count
     }
     
     
@@ -43,7 +48,6 @@ class DetailViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier( "detailCell" , forIndexPath: indexPath)
         let items = detailSpectItem.item
         cell.textLabel?.text = items[indexPath.row]
-        //          cell.textLabel!.text = item[indexPath.row]
         
         return cell
     }
@@ -73,19 +77,9 @@ class DetailViewController: UITableViewController {
              return [ checkOKAction, issueNoteAction, recordAction, takePhotoAction ]
 
 
-
-
         
     }
     
 }
 
-extension DetailViewController : SpecItemSelectionProtocol{
-    
-    // SpecItemSelectionDelegate
-    func specItemSelected(newSpecItem: spectItem) {
-        detailSpectItem = newSpecItem
-        tableView.reloadData()
-    }
 
-}

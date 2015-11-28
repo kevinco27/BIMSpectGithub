@@ -10,40 +10,28 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var userName: UITextField!
-        
-    @IBOutlet weak var userPassword: UITextField!
+    
+    @IBOutlet weak var backgroundView: UIImageView!
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var userPasswordTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+        backgroundView.image = UIImage(named: "loginBackground")
     }
     
+    @IBAction func submit(sender: AnyObject) {
         
-    
-    @IBAction func submitButton(sender: AnyObject) {
-        
-        
+        performSegueWithIdentifier( "toProject", sender: nil)
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

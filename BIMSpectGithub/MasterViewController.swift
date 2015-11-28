@@ -10,22 +10,20 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     
-    var masterSpectItem = [spectItem]()
+    var masterSpectItem = [SpectItem]()
     required init?(coder aDecoder: NSCoder){
             super.init(coder: aDecoder)
-        self.masterSpectItem.append(spectItem(floor: "1F", item: ["1F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
-        self.masterSpectItem.append(spectItem(floor: "2F", item: ["2F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
-        self.masterSpectItem.append(spectItem(floor: "3F", item: ["3F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
-        self.masterSpectItem.append(spectItem(floor: "4F", item: ["4F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
-        self.masterSpectItem.append(spectItem(floor: "5F", item: ["5F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
-        self.masterSpectItem.append(spectItem(floor: "6F", item: ["6F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "1F", item: ["1F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "2F", item: ["2F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "3F", item: ["3F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "4F", item: ["4F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "5F", item: ["5F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
+        self.masterSpectItem.append(SpectItem(floor: "6F", item: ["6F廁所浴室...", "磁質地磚尺寸...", "磁質地磚..."]))
         }
-    
-    weak var SpecItemSelectionDelegate:SpecItemSelectionProtocol?
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,13 +52,25 @@ class MasterViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedSpectItem = masterSpectItem[indexPath.row]
-        SpecItemSelectionDelegate?.specItemSelected(selectedSpectItem)
         
-        if let detailViewController = self.SpecItemSelectionDelegate as? DetailViewController {
-            splitViewController?.showDetailViewController(detailViewController, sender: nil)
-        }
+        let selectedSpectItem = masterSpectItem[indexPath.row]
+        
+        //send out notification with selectedSpectItem object
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.postNotificationName( "specItemChanged", object: selectedSpectItem)
+       
+    }
+    
+    //MARK: - Return button
+    @IBAction func back(sender: AnyObject) {
+        
+        //go back to the to the project view
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appdelegate.loggedIn = false
+        appdelegate.setupRootViewController(true, toLoginOrProjectView: "projectView")
+
     }
     
 }

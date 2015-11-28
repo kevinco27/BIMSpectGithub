@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A10171F1C09B28100FE6F62 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A10171E1C09B28100FE6F62 /* Project.swift */; settings = {ASSET_TAGS = (); }; };
 		2A20DADD1BFB0207007BAB94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */; };
 		2A20DAE21BFB0207007BAB94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE01BFB0207007BAB94 /* Main.storyboard */; };
 		2A20DAE51BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DAE31BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld */; };
 		2A20DAE71BFB0207007BAB94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE61BFB0207007BAB94 /* Assets.xcassets */; };
 		2A20DAEA1BFB0207007BAB94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE81BFB0207007BAB94 /* LaunchScreen.storyboard */; };
 		2A40A8831BFEC4B10077E751 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8821BFEC4B10077E751 /* MasterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A40A8891BFEF82D0077E751 /* spectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8881BFEF82D0077E751 /* spectItem.swift */; settings = {ASSET_TAGS = (); }; };
-		2A40A88C1BFF5C920077E751 /* SpecItemSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A88B1BFF5C920077E751 /* SpecItemSelectionProtocol.swift */; settings = {ASSET_TAGS = (); }; };
+		2A40A8891BFEF82D0077E751 /* SpectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8881BFEF82D0077E751 /* SpectItem.swift */; settings = {ASSET_TAGS = (); }; };
 		2A645E0C1BFF8A4700AC7042 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A645E0B1BFF8A4700AC7042 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2AD09AB21C001179008FDFCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB11C001179008FDFCA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2AD09AB41C005AD6008FDFCA /* ProjectSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A10171E1C09B28100FE6F62 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		2A20DAD91BFB0207007BAB94 /* BIMSpectGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BIMSpectGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A20DAE11BFB0207007BAB94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -28,10 +30,10 @@
 		2A20DAE91BFB0207007BAB94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A20DAEB1BFB0207007BAB94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A40A8821BFEC4B10077E751 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		2A40A8881BFEF82D0077E751 /* spectItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = spectItem.swift; sourceTree = "<group>"; };
-		2A40A88B1BFF5C920077E751 /* SpecItemSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecItemSelectionProtocol.swift; sourceTree = "<group>"; };
+		2A40A8881BFEF82D0077E751 /* SpectItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectItem.swift; sourceTree = "<group>"; };
 		2A645E0B1BFF8A4700AC7042 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2AD09AB11C001179008FDFCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,14 +67,14 @@
 			isa = PBXGroup;
 			children = (
 				2A40A88A1BFEF8FA0077E751 /* data */,
-				2A40A88B1BFF5C920077E751 /* SpecItemSelectionProtocol.swift */,
 				2AD09AB11C001179008FDFCA /* LoginViewController.swift */,
+				2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */,
 				2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */,
-				2A20DAE01BFB0207007BAB94 /* Main.storyboard */,
 				2A645E0B1BFF8A4700AC7042 /* DetailViewController.swift */,
 				2A40A8821BFEC4B10077E751 /* MasterViewController.swift */,
-				2A20DAE61BFB0207007BAB94 /* Assets.xcassets */,
+				2A20DAE01BFB0207007BAB94 /* Main.storyboard */,
 				2A20DAE81BFB0207007BAB94 /* LaunchScreen.storyboard */,
+				2A20DAE61BFB0207007BAB94 /* Assets.xcassets */,
 				2A20DAEB1BFB0207007BAB94 /* Info.plist */,
 				2A20DAE31BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld */,
 			);
@@ -82,7 +84,8 @@
 		2A40A88A1BFEF8FA0077E751 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				2A40A8881BFEF82D0077E751 /* spectItem.swift */,
+				2A40A8881BFEF82D0077E751 /* SpectItem.swift */,
+				2A10171E1C09B28100FE6F62 /* Project.swift */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -157,12 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AD09AB41C005AD6008FDFCA /* ProjectSelectionViewController.swift in Sources */,
 				2AD09AB21C001179008FDFCA /* LoginViewController.swift in Sources */,
 				2A40A8831BFEC4B10077E751 /* MasterViewController.swift in Sources */,
 				2A20DADD1BFB0207007BAB94 /* AppDelegate.swift in Sources */,
-				2A40A88C1BFF5C920077E751 /* SpecItemSelectionProtocol.swift in Sources */,
 				2A20DAE51BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld in Sources */,
-				2A40A8891BFEF82D0077E751 /* spectItem.swift in Sources */,
+				2A10171F1C09B28100FE6F62 /* Project.swift in Sources */,
+				2A40A8891BFEF82D0077E751 /* SpectItem.swift in Sources */,
 				2A645E0C1BFF8A4700AC7042 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

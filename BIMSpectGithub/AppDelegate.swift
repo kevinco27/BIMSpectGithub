@@ -14,22 +14,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var loggedIn = false
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        
-        
-        let leftNavController = splitViewController.viewControllers.first as! UINavigationController
-        let masterViewController = leftNavController.topViewController as! MasterViewController
-        let detailViewController = splitViewController.viewControllers.last as! DetailViewController
-        let firstSpectItem = masterViewController.masterSpectItem.first
-        detailViewController.detailSpectItem = firstSpectItem
-        
-        masterViewController.SpecItemSelectionDelegate = detailViewController
-        
-        
-        
+
+        setupRootViewController(false)
         return true
     }
+    
+    func setupRootViewController(animated: Bool , toLoginOrProjectView:String = "loginView")
+    {
+        
+        if let window = self.window
+        {
+            
+            var newRootViewController: UIViewController? = nil
+            var transition: UIViewAnimationOptions   //create and setup appropriate rootViewController
+            
+            if !loggedIn && toLoginOrProjectView == "loginView"
+            {
+                 let loginViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+                 newRootViewController = loginViewController
+                 transition = .TransitionFlipFromLeft
+    
+            }
+            else if !loggedIn && toLoginOrProjectView == "projectView"
+            {
+                let projectSelectionViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("projectView") as! ProjectSelectionViewController
+                newRootViewController = projectSelectionViewController
+                transition = .TransitionFlipFromLeft
+            }
+            else
+            {
+            
+              let splitViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier( "splitView" ) as! UISplitViewController
+              let leftNavController = splitViewController.viewControllers.first as! UINavigationController
+              let masterViewController = leftNavController.topViewController as! MasterViewController
+              let detailViewController = splitViewController.viewControllers.last as! DetailViewController
+              let firstSpectItem = masterViewController.masterSpectItem.first
+              detailViewController.detailSpectItem = firstSpectItem
+              transition = .TransitionFlipFromRight
+              newRootViewController = splitViewController
+            
+            
+            }
+            // update app's rootViewController
+            if let rootVC = newRootViewController {
+             if animated {
+              UIView.transitionWithView(window, duration: 0.5, options: transition , animations: {
+                    () ->Void in window.rootViewController = rootVC }, completion: nil)
+             }
+             else{
+                window.rootViewController = rootVC
+                }
+            }
+        }
+    }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -120,4 +160,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

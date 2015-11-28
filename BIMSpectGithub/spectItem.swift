@@ -9,10 +9,11 @@
 import Foundation
 import CoreData
 
-class spectItem {
+class SpectItem {
 
     let floor : String
     let item : [String]
+    
     
     init(floor:String, item:[String]){
         self.floor = floor
