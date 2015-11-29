@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A10171F1C09B28100FE6F62 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A10171E1C09B28100FE6F62 /* Project.swift */; settings = {ASSET_TAGS = (); }; };
+		2A10171F1C09B28100FE6F62 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A10171E1C09B28100FE6F62 /* Project.swift */; };
 		2A20DADD1BFB0207007BAB94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */; };
 		2A20DAE21BFB0207007BAB94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE01BFB0207007BAB94 /* Main.storyboard */; };
 		2A20DAE51BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DAE31BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld */; };
 		2A20DAE71BFB0207007BAB94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE61BFB0207007BAB94 /* Assets.xcassets */; };
 		2A20DAEA1BFB0207007BAB94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE81BFB0207007BAB94 /* LaunchScreen.storyboard */; };
-		2A40A8831BFEC4B10077E751 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8821BFEC4B10077E751 /* MasterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A40A8891BFEF82D0077E751 /* SpectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8881BFEF82D0077E751 /* SpectItem.swift */; settings = {ASSET_TAGS = (); }; };
-		2A645E0C1BFF8A4700AC7042 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A645E0B1BFF8A4700AC7042 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2AD09AB21C001179008FDFCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB11C001179008FDFCA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2AD09AB41C005AD6008FDFCA /* ProjectSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2A40A8831BFEC4B10077E751 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8821BFEC4B10077E751 /* MasterViewController.swift */; };
+		2A40A8891BFEF82D0077E751 /* SpectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8881BFEF82D0077E751 /* SpectItem.swift */; };
+		2A645E0C1BFF8A4700AC7042 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A645E0B1BFF8A4700AC7042 /* DetailViewController.swift */; };
+		2AD09AB21C001179008FDFCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB11C001179008FDFCA /* LoginViewController.swift */; };
+		2AD09AB41C005AD6008FDFCA /* ProjectSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,9 +281,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BIMSpectGithub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KaiHsiang.BIMSpectGithub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -292,9 +294,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BIMSpectGithub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KaiHsiang.BIMSpectGithub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
