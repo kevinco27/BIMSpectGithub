@@ -1,5 +1,5 @@
 //
-//  Project.swift
+//  ItemNGImage.swift
 //  BIMSpectGithub
 //
 //  Created by kai on 2015/12/6.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Project: NSManagedObject {
+class ItemNGImage: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

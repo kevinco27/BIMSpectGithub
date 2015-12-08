@@ -11,6 +11,7 @@ import CoreData
 
 class SpectItem {
 
+    
     let floor : String
     let item : [String]
     
