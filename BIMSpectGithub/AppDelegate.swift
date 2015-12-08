@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  BIMSpectGithub
 //
-//  Created by kai on 2015/11/17.
+//  Created by kai on 2015/11/17.   aaaaa
 //  Copyright © 2015年 kai. All rights reserved.
 //
 
