@@ -9,24 +9,29 @@
         <attribute name="categoryId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="itemCheck" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="itemFalseText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ItemNGImage" representedClassName=".ItemNGImage" syncable="YES">
         <attribute name="createDateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemNGImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="ngImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="ItemOKImage" representedClassName=".ItemOKImage" syncable="YES">
         <attribute name="createDateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemOKImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="okImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="ItemSpecImage" representedClassName=".ItemSpecImage" syncable="YES">
         <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemSpecImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="specImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="ItemViewImage" representedClassName=".ItemViewImage" syncable="YES">
         <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemViewImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="viewImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName=".Project" syncable="YES">
@@ -41,11 +46,11 @@
     </entity>
     <elements>
         <element name="Category" positionX="-299" positionY="198" width="128" height="90"/>
-        <element name="Item" positionX="-110" positionY="72" width="128" height="103"/>
-        <element name="ItemNGImage" positionX="81" positionY="264" width="128" height="88"/>
-        <element name="ItemOKImage" positionX="81" positionY="144" width="128" height="88"/>
-        <element name="ItemSpecImage" positionX="81" positionY="36" width="128" height="73"/>
-        <element name="ItemViewImage" positionX="81" positionY="-72" width="128" height="73"/>
+        <element name="Item" positionX="-110" positionY="72" width="128" height="120"/>
+        <element name="ItemNGImage" positionX="81" positionY="264" width="128" height="105"/>
+        <element name="ItemOKImage" positionX="81" positionY="144" width="128" height="105"/>
+        <element name="ItemSpecImage" positionX="81" positionY="36" width="128" height="90"/>
+        <element name="ItemViewImage" positionX="81" positionY="-72" width="128" height="90"/>
         <element name="Project" positionX="-299" positionY="-18" width="128" height="88"/>
         <element name="SpotCheck" positionX="-299" positionY="90" width="128" height="90"/>
     </elements>

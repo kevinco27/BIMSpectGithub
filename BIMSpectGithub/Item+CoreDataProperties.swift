@@ -18,5 +18,6 @@ extension Item {
     @NSManaged var itemCheck: NSNumber?
     @NSManaged var itemFalseText: String?
     @NSManaged var itemName: String?
+    @NSManaged var itemId : NSNumber?
 
 }
