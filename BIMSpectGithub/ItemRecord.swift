@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  ItemRecord.swift
 //  BIMSpectGithub
 //
 //  Created by kai on 2015/12/9.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Item: NSManagedObject {
+class ItemRecord: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

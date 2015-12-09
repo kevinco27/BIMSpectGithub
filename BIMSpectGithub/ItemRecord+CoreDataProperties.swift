@@ -1,5 +1,5 @@
 //
-//  ItemViewImage+CoreDataProperties.swift
+//  ItemRecord+CoreDataProperties.swift
 //  BIMSpectGithub
 //
 //  Created by kai on 2015/12/9.
@@ -12,10 +12,11 @@
 import Foundation
 import CoreData
 
-extension ItemViewImage {
+extension ItemRecord {
 
+    @NSManaged var createDateTime: NSDate?
     @NSManaged var itemId: NSNumber?
-    @NSManaged var itemViewImageId: NSNumber?
-    @NSManaged var viewImage: NSData?
+    @NSManaged var itemRecordId: NSNumber?
+    @NSManaged var record: NSData?
 
 }

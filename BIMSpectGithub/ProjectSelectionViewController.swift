@@ -88,7 +88,7 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
 //            sections![index]
 //            
 //        }
-        
+        return 3
     }
 
     

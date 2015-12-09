@@ -24,6 +24,12 @@
         <attribute name="itemOKImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="okImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
+    <entity name="ItemRecord" representedClassName=".ItemRecord" syncable="YES">
+        <attribute name="createDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemRecordId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="record" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <entity name="ItemSpecImage" representedClassName=".ItemSpecImage" syncable="YES">
         <attribute name="itemId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="itemSpecImageId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -53,5 +59,6 @@
         <element name="ItemViewImage" positionX="81" positionY="-72" width="128" height="90"/>
         <element name="Project" positionX="-299" positionY="-18" width="128" height="88"/>
         <element name="SpotCheck" positionX="-299" positionY="90" width="128" height="90"/>
+        <element name="ItemRecord" positionX="-108" positionY="81" width="128" height="105"/>
     </elements>
 </model>
