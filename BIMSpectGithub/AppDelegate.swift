@@ -124,7 +124,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         item.categoryId = i
         item.itemId = i*6 + j
-        item.itemName = items[j]
+        let index = Int(arc4random_uniform(6))
+        item.itemName = items[index]
         
         appDelegate.saveContext()
         
