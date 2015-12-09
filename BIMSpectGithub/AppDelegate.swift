@@ -18,8 +18,120 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         setupRootViewController(false)
+        
+        //Initiate demo data
+        deleteAllExistingData()
+        createBIMSpectData()
+        
         return true
     }
+    
+    // MARK: --InitialDemoData
+    func deleteAllExistingData() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        
+        var fetchRequest = NSFetchRequest(entityName: "Project")
+        var deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "SpotCheck")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Category")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        fetchRequest = NSFetchRequest(entityName: "Item")
+        deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func createBIMSpectData()
+    {
+        //取得Context
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        //建立Entity
+        let project = NSEntityDescription.insertNewObjectForEntityForName("Project", inManagedObjectContext: context) as! Project
+        let spotCheck = NSEntityDescription.insertNewObjectForEntityForName("SpotCheck", inManagedObjectContext: context) as! SpotCheck
+        
+        project.projectId = 0
+        project.projectName = "Research Building for NTU Civil Engineering"
+        
+        spotCheck.spotCheckId = 0
+        spotCheck.projectId = 0
+        spotCheck.spotCheckName = "Door"
+        
+        appDelegate.saveContext()
+        
+        for i in 0...5 {
+            createCategories(i, appDelegate: appDelegate, context: context)
+        }
+        
+        for i in 0...5 {
+            for j in 0...5{
+                createItems(i, j: j, appDelegate: appDelegate, context: context)
+            }
+        }
+        
+        
+    }
+    
+    func createCategories(i:Int, appDelegate:AppDelegate, context:NSManagedObjectContext)
+    {
+        //建立Entity
+        let category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: context) as! Category
+        
+        category.categoryId=i
+        category.spotCheckId = 0
+        category.categoryName = "\(i+1)F"
+        
+        appDelegate.saveContext()
+    }
+    
+    func createItems(i:Int, j:Int, appDelegate:AppDelegate, context:NSManagedObjectContext)
+    {
+        var items:[String] = []
+        items.append("廁所浴室門檢查是否符合施工安裝法規。")
+        items.append("磁質地磚尺寸、顏色、型號是否正確。")
+        items.append("磁質地磚：以水平尺校正磚面齊平，磚縫整齊平直不大於10mm")
+        items.append("廁所粉刷打底需防水粉刷。")
+        items.append("陽台粉刷打底需防水粉刷。")
+        items.append("磁磚表面以海綿沾肥皂水清洗。")
+        
+        //建立Entity
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as! Item
+        
+        item.categoryId = i
+        item.itemId = i*6 + j
+        let index = Int(arc4random_uniform(6))
+        item.itemName = items[index]
+        
+        appDelegate.saveContext()
+        
+    }
+
+    // MARK: --
     
     func setupRootViewController(animated: Bool , toLoginOrProjectView:String = "loginView")
     {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
 
@@ -22,6 +23,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         backgroundView.image = UIImage(named: "loginBackground")
     }
+    
+
     
     @IBAction func submit(sender: AnyObject) {
         
