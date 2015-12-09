@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD8E8511C187D8200187497 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD8E8501C187D8200187497 /* CoreData.framework */; };
 		2A00F8001C181B9B00B116EF /* ItemOKImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00F7EE1C181B9B00B116EF /* ItemOKImage+CoreDataProperties.swift */; };
 		2A00F8011C181B9B00B116EF /* ItemOKImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00F7EF1C181B9B00B116EF /* ItemOKImage.swift */; };
 		2A00F8021C181B9B00B116EF /* ItemRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00F7F01C181B9B00B116EF /* ItemRecord+CoreDataProperties.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CD8E8501C187D8200187497 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2A00F7EE1C181B9B00B116EF /* ItemOKImage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemOKImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2A00F7EF1C181B9B00B116EF /* ItemOKImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemOKImage.swift; sourceTree = "<group>"; };
 		2A00F7F01C181B9B00B116EF /* ItemRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD8E8511C187D8200187497 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +95,7 @@
 		2A20DAD01BFB0207007BAB94 = {
 			isa = PBXGroup;
 			children = (
+				1CD8E8501C187D8200187497 /* CoreData.framework */,
 				2A20DADB1BFB0207007BAB94 /* BIMSpectGithub */,
 				2A20DADA1BFB0207007BAB94 /* Products */,
 			);

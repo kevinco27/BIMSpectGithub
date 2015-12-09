@@ -77,7 +77,7 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
 
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
+
         return sections!.count
     }
 
