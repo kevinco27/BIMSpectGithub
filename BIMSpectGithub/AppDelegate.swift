@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         spotCheck.spotCheckId = 0
         spotCheck.projectId = 0
         spotCheck.spotCheckName = "Door"
-        
+                
         appDelegate.saveContext()
         
         for i in 0...5 {

@@ -20,6 +20,7 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
     var currentSpCheck : [SpotCheck]!
     var currentCategory : [[Category]]!
     var pickedCategory : [Category]?
+    var numbersOfCategoryPicked : Int?
     let cellIdentifer = ["projectNameCell", "pickerCell"]
     
 
@@ -61,7 +62,7 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
             dataSource = load.find() as! [SpotCheck]
             spotCheckData?.append(dataSource)
         }
-        
+        print("spotCheckData:\(spotCheckData!.count)")
     }
     
     func loadCategoryData(spotcheckData:[[SpotCheck]]?){
@@ -109,9 +110,6 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
 //        
 //    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -125,115 +123,164 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
     }
 
     
-    
-     var dataCount = 0
+     var counter = 0
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell!
         let  currentCell = cellIdentifer[indexPath.row]
-        
+       
         // each section has two cell
         switch currentCell{
         case "projectNameCell":
             cell = tableView.dequeueReusableCellWithIdentifier(currentCell, forIndexPath: indexPath) as  UITableViewCell
-            currentProj = projectData![dataCount]
+            currentProj = projectData![counter]
             cell.textLabel?.text = currentProj.projectName
         
         
         case "pickerCell":
             cell = tableView.dequeueReusableCellWithIdentifier(currentCell, forIndexPath: indexPath) as  UITableViewCell
             let contentView = cell.contentView
-            
+        
             //creat a picker view in the second raw of a section for user to choose spot and category
             let PickerView = UIPickerView()
             PickerView.dataSource = self
             PickerView.delegate = self
-            currentSpCheck = spotCheckData![dataCount]
-            currentCategory = categoryData![dataCount]
-            ++dataCount
-            contentView.addSubview(PickerView)
+            PickerView.tag = counter
+
+            ++counter
             
-            //autoLayout
+            contentView.addSubview(PickerView)
+            //autoLayout - picker view
             let HZCons = NSLayoutConstraint(item: PickerView, attribute: .CenterX, relatedBy: .Equal, toItem: contentView, attribute: .CenterX, multiplier: 1, constant: 0)//Horizontal center to super view
             
             let VRCons = NSLayoutConstraint(item: PickerView, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1, constant: 0) //Vertical center to super view
             
-            let HeightCons = NSLayoutConstraint(item: PickerView, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 0.9, constant: 0) //equal height of super view
+            let HeightCons = NSLayoutConstraint(item: PickerView, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 2, constant: 0) //equal height of super view
             
             let WidthCons = NSLayoutConstraint(item: PickerView, attribute: .Width, relatedBy: .Equal, toItem: contentView, attribute: .Width, multiplier: 0.5, constant: 0)//half width of super view
+            
             PickerView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activateConstraints([HZCons,VRCons,HeightCons,WidthCons])
-            
+            cell.hidden = true
             
         default:break
         }
         return cell
     }
+    
+    
+    var selectedProjectNameCellIndexPath : NSIndexPath?
+    var pickerCellIndexPath : NSIndexPath?
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.row == 0{
+            //let previousIndexPath = selectedProjectNameCellIndexPath
+            if selectedProjectNameCellIndexPath == nil{
+                selectedProjectNameCellIndexPath = indexPath
+                pickerCellIndexPath = NSIndexPath(
+                    forRow: indexPath.row+1,
+                    inSection: indexPath.section)
+                tableView.cellForRowAtIndexPath(pickerCellIndexPath!)?.hidden = false
+                
+            }else{
+            
+            let previousPickerCellIndexPath = NSIndexPath(
+                forRow: selectedProjectNameCellIndexPath!.row+1,
+                inSection: selectedProjectNameCellIndexPath!.section)
+           
+            if indexPath == selectedProjectNameCellIndexPath{
+                
+                if (tableView.cellForRowAtIndexPath(previousPickerCellIndexPath)?.hidden)!{
+                    tableView.cellForRowAtIndexPath(previousPickerCellIndexPath)?.hidden = false
+                }else{
+                    tableView.cellForRowAtIndexPath(previousPickerCellIndexPath)?.hidden = true
+                }                
+            }else{
+                selectedProjectNameCellIndexPath = indexPath
+                pickerCellIndexPath = NSIndexPath(
+                    forRow: indexPath.row+1,
+                    inSection: indexPath.section)
+                tableView.cellForRowAtIndexPath(pickerCellIndexPath!)?.hidden = false
+                tableView.cellForRowAtIndexPath(previousPickerCellIndexPath)?.hidden = true
+             
+                }
+            }
+        }
+    
+    }
 
-    
-//    var selectedProject: Project2?
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//         selectedProject = projects[indexPath.row]
-//    }
-//    
-//    @IBAction func toSpecItem(sender: AnyObject) {
-//        
-//        if selectedProject != nil {
-//        
-//        //jump to the splitViewController
-//            let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//            appdelegate.loggedIn = true
-//            appdelegate.setupRootViewController(true)
-//        }
-//        
-//    }
-    
 }
 
-extension ProjectSelectionViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+
+// extense the ProjectSelectionViewController to perform the picker view delegate
+ extension ProjectSelectionViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
         return 2
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
+        let tagOfPicker = pickerView.tag
         if component == 0 {
-            return currentSpCheck.count
+            
+            return spotCheckData![tagOfPicker].count
         } else {
-            return currentCategory.count
+            
+            if numbersOfCategoryPicked != nil{
+                return numbersOfCategoryPicked!
+            }else{
+                return 1
+            }
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         
-        
-        if component == 0 {
-            
-            return currentSpCheck![row].spotCheckName
-        }else{
-            if let picked = pickedCategory {
-                return picked[row].categoryName
-            }else{
-                return "none"
-            }
+        var pickerLabel = view as! UILabel!
+        if view == nil {  //if no label there yet
+            pickerLabel = UILabel()
         }
         
+        if component == 0{
+            let titleData:String!
+            let tagOfPicker = pickerView.tag
+            currentSpCheck = spotCheckData![tagOfPicker]
+            currentCategory = categoryData![tagOfPicker]
+            
+            titleData = currentSpCheck![row].spotCheckName
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Arial", size: 15.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+            pickerLabel!.attributedText = myTitle
+            pickerLabel!.textAlignment = .Center
+            return pickerLabel
+            
+        }else{
+            let titleData :String!
+            if let picked = pickedCategory {
+                titleData = picked[row].categoryName
+            }else{
+                titleData =  "none"
+            }
+            
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Arial", size: 15.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+            pickerLabel!.attributedText = myTitle
+            pickerLabel!.textAlignment = .Center
+            return pickerLabel
+        }
         
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if pickerView.tag%2 == 0 {
+       
+        if component == 0 {
             pickedCategory = currentCategory[row]
+            numbersOfCategoryPicked = pickedCategory?.count
             pickerView.reloadComponent(1)
         }else{
             
         }
-        
-        
     }
+    
+    
     
 }
 
