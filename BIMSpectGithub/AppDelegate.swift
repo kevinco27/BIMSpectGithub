@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var loggedIn = false
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         setupRootViewController(false)
@@ -132,6 +131,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: --
+    var loggedIn = false
+    var projecDelegate: ProjectSelectionViewControllerDelegate?
+    var temp_pickedSpCheck : SpotCheck!
     
     func setupRootViewController(animated: Bool , toLoginOrProjectView:String = "loginView")
     {
@@ -144,10 +146,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if !loggedIn && toLoginOrProjectView == "loginView"
             {
-                 let loginViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
-                 newRootViewController = loginViewController
-                 transition = .TransitionFlipFromLeft
-    
+                let loginViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+                newRootViewController = loginViewController
+                transition = .TransitionFlipFromLeft
+                
             }
             else if !loggedIn && toLoginOrProjectView == "projectView"
             {
@@ -157,31 +159,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             else
             {
-            
-              let splitViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier( "splitView" ) as! UISplitViewController
-              let leftNavController = splitViewController.viewControllers.first as! UINavigationController
-              let masterViewController = leftNavController.topViewController as! MasterViewController
-              let detailViewController = splitViewController.viewControllers.last as! DetailViewController
-              let firstSpectItem = masterViewController.masterSpectItem.first
-              detailViewController.detailSpectItem = firstSpectItem
-              transition = .TransitionFlipFromRight
-              newRootViewController = splitViewController
-            
-            
+                
+                let splitViewController = window.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier( "splitView" ) as! UISplitViewController
+                transition = .TransitionFlipFromRight
+                newRootViewController = splitViewController
+                
+                
             }
             // update app's rootViewController
             if let rootVC = newRootViewController {
-             if animated {
-              UIView.transitionWithView(window, duration: 0.5, options: transition , animations: {
-                    () ->Void in window.rootViewController = rootVC }, completion: nil)
-             }
-             else{
-                window.rootViewController = rootVC
+                if animated {
+                    UIView.transitionWithView(window, duration: 0.5, options: transition , animations: {
+                        () -> Void in window.rootViewController = rootVC }, completion: nil)
+                    self.projecDelegate?.passingSpCheck(temp_pickedSpCheck)
+                }
+                else{
+                    window.rootViewController = rootVC
                 }
             }
         }
     }
-
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailViewController: UITableViewController {
+class DetailViewController: UITableViewController{
 
-    
     @IBOutlet weak var tableVIew: UITableView!
-    var detailSpectItem : SpectItem!
+    var pickedSpectItems : [Item]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //receive the notification when specItem is changed
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "specItemSelection:", name: "specItemChanged" , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "categorySelection:", name: "categoryChanged" , object: nil)
     }
     
-    func specItemSelection(noti : NSNotification){
-        detailSpectItem = noti.object as! SpectItem
+    func categorySelection(noti : NSNotification){
+        let selectedCategory = noti.object as! Category
+        pickedSpectItems = loadItemData(selectedCategory)
         tableView.reloadData()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    //MARK:- load item data
+    func loadItemData(pickedCategory:Category)->[Item]?{
+        
+        let itemsPick : [Item]?
+        let requestForItem = NSFetchRequest(entityName: "Item")
+        let filter = pickedCategory.categoryId
+        let predicate = NSPredicate(format: "categoryId = %@", filter!)
+        let load = LoadData(request: requestForItem, predicate: predicate)
+        itemsPick = load.find() as? [Item]
+        
+        if itemsPick != nil{
+            return itemsPick // successful fetch items
+        }else{
+            return nil // fetch nothing
+        }
     }
+    
+    
     
     // MARK: - Table view data source
     
@@ -40,14 +56,18 @@ class DetailViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return detailSpectItem.item.count
+        if pickedSpectItems != nil{
+            return pickedSpectItems.count
+        }else{
+            return 0
+        }
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier( "detailCell" , forIndexPath: indexPath)
-        let items = detailSpectItem.item
-        cell.textLabel?.text = items[indexPath.row]
+        let item = pickedSpectItems[indexPath.row]
+        cell.textLabel?.text = item.itemName
         
         return cell
     }
