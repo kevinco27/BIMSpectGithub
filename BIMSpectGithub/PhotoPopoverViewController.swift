@@ -25,10 +25,6 @@ class PhotoPopoverViewController: UITableViewController, UIImagePickerController
         nc.addObserver(self, selector: "receiveSomethingFromDetailView:", name: "item", object: nil)
         nc.addObserver(self, selector: "receiveSomethingFromDetailView:", name: "checkStatus", object: nil)
         
-        nc.addObserver(self, selector: "saveImage:", name: "imagePicking", object: nil)
-        
-        //imagePicker = UIImagePickerController()
-        
     }
     
     func receiveSomethingFromDetailView(noti:NSNotification){
@@ -92,55 +88,57 @@ class PhotoPopoverViewController: UITableViewController, UIImagePickerController
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if let image = info[UIImagePickerControllerOriginalImage]as?UIImage{
-          
-           let nc = NSNotificationCenter.defaultCenter() 
-           nc.postNotificationName("imagePicking", object: image)
+           
+           // processing the image saving in background
+           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+               {self.saveImage(image)})
+            
         }else{ print("fail")}
     
         self.dismissViewControllerAnimated(false, completion:{ self.presentViewController( self.imagePicker, animated: false, completion: nil)})
     }
     
-    func saveImage(noti:NSNotification){
+    func saveImage(image:UIImage){
         
-        
-        let image : NSData = UIImagePNGRepresentation(noti.object as! UIImage)!
-        
-        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appdelegate.managedObjectContext
-        
-        if checkStatus!{
+            let image : NSData = UIImagePNGRepresentation(image)!
             
+            let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appdelegate.managedObjectContext
             
-            let item = ItemOKImage(entity: NSEntityDescription.entityForName("ItemOKImage", inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
-            
-            item.itemId = self.item.itemId
-            
-            item.okImage = image
-            
-            item.itemOKImageId = { ()-> NSNumber in
+            if self.checkStatus!{
                 
-                let fetchRequest = NSFetchRequest(entityName: "ItemOKImage")
-                fetchRequest.fetchLimit = 1
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "itemOKImageId", ascending: false)]
+                //creat ItemOKImage object
+                let item = ItemOKImage(entity: NSEntityDescription.entityForName("ItemOKImage", inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
                 
-                let data:ItemOKImage!
-                do
-                {
-                    // 將查詢結果 存入 data
-                      data = try context.executeFetchRequest(fetchRequest).first as? ItemOKImage
-                }
-                catch
-                {
-                    return NSNumber(integer: 0)
-                }
+                // assign "itemId" "okImage" "itemOKImageId" "createDateTime"
+                item.itemId = self.item.itemId
                 
-                let id = Int(data.itemOKImageId!) + 1
-                return  NSNumber(integer: id)
-                }()
-            
-            item.createDateTime = NSDate()
-            print(item.createDateTime)
-            
+                item.okImage = image
+                
+                item.itemOKImageId = { ()-> NSNumber in
+                    
+                    let fetchRequest = NSFetchRequest(entityName: "ItemOKImage")
+                    fetchRequest.fetchLimit = 1
+                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "itemOKImageId", ascending: false)]
+                    
+                    let data:ItemOKImage!
+                    do
+                    {
+                        // 將查詢結果 存入 data
+                        data = try context.executeFetchRequest(fetchRequest).first as? ItemOKImage
+                    }
+                    catch
+                    {
+                        return NSNumber(integer: 0)
+                    }
+                    
+                    let id = Int(data.itemOKImageId!) + 1
+                    return  NSNumber(integer: id)
+                    }()
+                
+                item.createDateTime = NSDate()
+                print(item.createDateTime)
+                
                 do{
                     try context.save()
                     
@@ -148,47 +146,47 @@ class PhotoPopoverViewController: UITableViewController, UIImagePickerController
                     print("fail saving item")
                     
                 }
-            
-        }else{
-            
-            let item = ItemNGImage(entity: NSEntityDescription.entityForName("ItemNGImage", inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
-            
-            item.itemId = self.item.itemId
-            item.ngImage = image
-            
-            item.itemNGImageId = { ()-> NSNumber in
                 
-                let fetchRequest = NSFetchRequest(entityName: "ItemNGImage")
-                fetchRequest.fetchLimit = 1
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "itemNGImageId", ascending: false)]
+            }else{
                 
-                let data:ItemNGImage!
-                do
-                {
-                    // 將查詢結果 存入 data
-                    data = try context.executeFetchRequest(fetchRequest).first as? ItemNGImage
-                }
-                catch
-                {
-                    return NSNumber(integer: 0)
-                }
+                //creat ItemNGImage object
+                let item = ItemNGImage(entity: NSEntityDescription.entityForName("ItemNGImage", inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
                 
-                let id = Int(data.itemNGImageId!) + 1
-                return  NSNumber(integer: id)
-                }()
-            
-            item.createDateTime = NSDate()
-            print(item.createDateTime)
-            
-            do{
-                try context.save()
-            
+                // assign "itemId" "ngImage" "itemNGImageId" "createDateTime"
+                item.itemId = self.item.itemId
+                item.ngImage = image
+                
+                item.itemNGImageId = { ()-> NSNumber in
+                    
+                    let fetchRequest = NSFetchRequest(entityName: "ItemNGImage")
+                    fetchRequest.fetchLimit = 1
+                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "itemNGImageId", ascending: false)]
+                    
+                    let data:ItemNGImage!
+                    do
+                    {
+                        // 將查詢結果 存入 data
+                        data = try context.executeFetchRequest(fetchRequest).first as? ItemNGImage
+                    }
+                    catch
+                    {
+                        return NSNumber(integer: 0)
+                    }
+                    
+                    let id = Int(data.itemNGImageId!) + 1
+                    return  NSNumber(integer: id)
+                    }()
+                
+                item.createDateTime = NSDate()
+                print(item.createDateTime)
+                
+                do{
+                    try context.save()
+                    
                 }catch{
-                print("fail saving item")
-            }
+                    print("fail saving item")
+                }
+        }
         
-        
-    }
-
     }
 }

@@ -166,10 +166,11 @@ class ImageViwer: UIViewController, UICollectionViewDataSource, UICollectionView
                 }
                 
                 try!self.context.save()
-                self.imageData = self.imageData!.filter({ (element) -> Bool in
+                self.imageData = self.imageData!.filter({ (var element) -> Bool in
                     if element[""]as? String == "none"{
                         return false
                     }else{
+                       element["Selected"] = false
                         return true
                     }
                 })
