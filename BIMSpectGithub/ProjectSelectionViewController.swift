@@ -82,12 +82,12 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
         return 2
     }
 
-    
     //one section in the table view has two cells
     let cellIdentifer = ["projectNameCell", "pickerCell"]
     var counter = 0
     var downloadButton : UIButton!
     var currentProj : Project!
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell!
@@ -99,7 +99,7 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
             cell = tableView.dequeueReusableCellWithIdentifier(currentCell, forIndexPath: indexPath) as  UITableViewCell
             currentProj = projectData![counter]
             cell.textLabel?.text = currentProj.projectName
-        
+
         
         case "pickerCell":
             cell = tableView.dequeueReusableCellWithIdentifier(currentCell, forIndexPath: indexPath) as  UITableViewCell
@@ -165,6 +165,8 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
     // called when tap the download button
     func projectDownload(sender:UIButton!){
     
+        if pickedSpCheck != nil{
+        
         let appDelegate = UIApplication.sharedApplication().delegate as!AppDelegate
         
         appDelegate.temp_pickedSpCheck = pickedSpCheck //passing pickedSpCheck to AppDelegate then to MasterViewController by AppDelegate to tell which spot is selected
@@ -172,6 +174,8 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
         //jump to split view while changing the root view to splitViewController
         appDelegate.loggedIn = true
         appDelegate.setupRootViewController(true)
+            
+        }
     
     }
     
@@ -267,6 +271,16 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
         
         
     }
+    
+    
+    @IBAction func signOut(sender: AnyObject) {
+        //go back to the to the login view
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appdelegate.loggedIn = false
+        appdelegate.setupRootViewController(true, toLoginOrProjectView: "loginView")
+        
+    }
+    
 
 
 }
