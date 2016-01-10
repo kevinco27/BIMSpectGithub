@@ -67,7 +67,7 @@ class ImageViwer: UIViewController, UICollectionViewDataSource, UICollectionView
     }
  
     @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     //MARK:- collection view

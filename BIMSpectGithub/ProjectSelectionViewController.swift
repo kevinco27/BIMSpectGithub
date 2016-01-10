@@ -14,11 +14,16 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var signOutButtonBackView: UIView!
+    
     var projectData:[Project]?
     var spotCheckData:[[SpotCheck]]? = []
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        signOutButtonBackView.layer.borderWidth = CGFloat(0.8)
+        signOutButtonBackView.layer.borderColor = UIColor(red: 0.13, green: 0.57, blue: 0.98, alpha: 1.0).CGColor
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -136,14 +141,15 @@ class ProjectSelectionViewController: UIViewController, UITableViewDataSource, U
             //creat a button 
             downloadButton = UIButton()
             downloadButton.addTarget(self, action: "projectDownload:", forControlEvents: .TouchUpInside)
+            downloadButton.layer.backgroundColor = UIColor(red: 0.94, green: 0.45, blue: 0.26, alpha: 1.0).CGColor
             downloadButton.setTitle("Download", forState: .Normal)
-            downloadButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+            downloadButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             contentView.addSubview(downloadButton)
             //autolayout for button 
             let distanceToPiclerView = PickerView.frame.width/2 + 50
             let HZConsOfButton = NSLayoutConstraint(item: downloadButton, attribute: .CenterX, relatedBy: .Equal, toItem: PickerView, attribute: .CenterX, multiplier: 1.0, constant: distanceToPiclerView )
             let VRConsOfButton = NSLayoutConstraint(item: downloadButton, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
-            let HeightConsOfButton = NSLayoutConstraint(item: downloadButton, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 0.8, constant: 0)
+            let HeightConsOfButton = NSLayoutConstraint(item: downloadButton, attribute: .Height, relatedBy: .Equal, toItem: contentView, attribute: .Height, multiplier: 0.5, constant: 0)
             downloadButton.frame.size.width = 80
             downloadButton.translatesAutoresizingMaskIntoConstraints = false
             

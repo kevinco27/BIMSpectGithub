@@ -18,10 +18,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var userPasswordTextField: UITextField!
     
+    @IBOutlet weak var signInButtonBackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.image = UIImage(named: "loginBackground")
+        signInButtonBackView.layer.borderWidth = CGFloat(0.8)
+        signInButtonBackView.layer.borderColor = UIColor(red: 0.13, green: 0.57, blue: 0.98, alpha: 1.0).CGColor
     }
     
 

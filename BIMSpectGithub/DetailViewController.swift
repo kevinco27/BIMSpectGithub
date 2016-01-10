@@ -61,6 +61,7 @@ class DetailViewController: UITableViewController, UIPopoverPresentationControll
         }else{
             return 0
         }
+        
     }
     
     var cell : UITableViewCell!
@@ -98,8 +99,10 @@ class DetailViewController: UITableViewController, UIPopoverPresentationControll
             
             
             //show pop over view
-            self.popOver(indexPath, theOrderOfRawActions: 2, popOverViewIdentifier: "photoPopOver")
+            let popOverViewSize = CGSize(width: 100, height: 58)
+            self.popOver( popOverViewSize, selectedIndexPath: indexPath, theOrderInRawActions: 2, popOverViewIdentifier: "photoPopOver", presentationStyle: .Popover)
             
+            //pass the "item" to the pop over view
             let item = self.pickedSpectItems[indexPath.row]
             let checkstatus = self.checkStatus[indexPath.row]
             
@@ -113,14 +116,29 @@ class DetailViewController: UITableViewController, UIPopoverPresentationControll
         
         let recordAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "          ", handler:{
             ( action : UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            //show pop over view
+            let popOverViewSize = CGSize(width: 200, height: 130)
+            self.popOver( popOverViewSize, selectedIndexPath: indexPath, theOrderInRawActions: 3, popOverViewIdentifier: "recorderView", presentationStyle: .FormSheet)
+            //pass the "item" to the pop over view
+            let item = self.pickedSpectItems[indexPath.row]
+            let nc = NSNotificationCenter.defaultCenter()
+            nc.postNotificationName("item", object: item)
+            
             }
         )
         let issueNoteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "          ", handler:{
              ( action : UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-                     }
-         )
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let textInput = storyboard.instantiateViewControllerWithIdentifier("textInput") as!TextInputViewController
+            textInput.preferredContentSize = CGSize(width: 600, height: 600)
+            textInput.modalPresentationStyle = .FormSheet
+            let item = self.pickedSpectItems[indexPath.row]
+            textInput.item = item
+            self.presentViewController(textInput, animated: true, completion: nil)
+            })
         
         
+            // set background image of raw actions
             takePhotoAction.backgroundColor = UIColor(patternImage: UIImage(named: "takePhotoImage")!)
             recordAction.backgroundColor = UIColor(patternImage: UIImage(named: "recordImage")!)
             issueNoteAction.backgroundColor = UIColor(patternImage: UIImage(named: "issueNoteImage")!)
@@ -139,7 +157,7 @@ class DetailViewController: UITableViewController, UIPopoverPresentationControll
             return .None
     }
     
-    func popOver(selectedIndexPath:NSIndexPath, theOrderOfRawActions:Int ,popOverViewIdentifier:String){
+    func popOver(popOverViewSize:CGSize, selectedIndexPath:NSIndexPath, theOrderInRawActions:Int ,popOverViewIdentifier:String, presentationStyle: UIModalPresentationStyle){
         
         
         
@@ -149,15 +167,22 @@ class DetailViewController: UITableViewController, UIPopoverPresentationControll
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let popoverViewController = storyboard.instantiateViewControllerWithIdentifier(popOverViewIdentifier)
-        popoverViewController.modalPresentationStyle = .Popover
-        popoverViewController.preferredContentSize = CGSizeMake(100, 58)
+        popoverViewController.modalPresentationStyle = presentationStyle
+        popoverViewController.preferredContentSize = popOverViewSize
         
-        let popover = popoverViewController.popoverPresentationController
-        popover?.delegate = self
-        popover?.permittedArrowDirections = .Any
-        popover?.sourceView = cell.contentView
-        let XPositionOfRawAction = cell.contentView.frame.maxX + CGFloat(37.5) + CGFloat(75*(theOrderOfRawActions-1))
-        popover?.sourceRect = CGRect(x: XPositionOfRawAction , y: cell.contentView.frame.midY, width: 1, height: 1)
+        //set the reletive parameters of viewcontroller according to the presentationStyle
+        switch presentationStyle{
+        case .Popover:
+            let popover = popoverViewController.popoverPresentationController
+            popover?.delegate = self
+            popover?.permittedArrowDirections = .Any
+            popover?.sourceView = cell.contentView
+            let XPositionOfRawAction = cell.contentView.frame.maxX + CGFloat(37.5) + CGFloat(75*(theOrderInRawActions-1))
+            popover?.sourceRect = CGRect(x: XPositionOfRawAction , y: cell.contentView.frame.midY, width: 1, height: 1)
+        
+        default:break
+        }
+        
         self.presentViewController(popoverViewController, animated: true, completion: nil)
     }
     

@@ -30,7 +30,6 @@
 		2A1243F71C37F8B0006DF515 /* ImageViwer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1243F61C37F8B0006DF515 /* ImageViwer.swift */; };
 		2A20DADD1BFB0207007BAB94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */; };
 		2A20DAE51BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DAE31BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld */; };
-		2A20DAE71BFB0207007BAB94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE61BFB0207007BAB94 /* Assets.xcassets */; };
 		2A20DAEA1BFB0207007BAB94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A20DAE81BFB0207007BAB94 /* LaunchScreen.storyboard */; };
 		2A40A8831BFEC4B10077E751 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8821BFEC4B10077E751 /* MasterViewController.swift */; };
 		2A40A8891BFEF82D0077E751 /* SpectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40A8881BFEF82D0077E751 /* SpectItem.swift */; };
@@ -40,6 +39,9 @@
 		2A8D93F21C2088B600969245 /* ProjectSelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D93F11C2088B600969245 /* ProjectSelectionViewControllerDelegate.swift */; };
 		2AAAC8041C1EF27600751AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AAAC8031C1EF27600751AC1 /* Main.storyboard */; };
 		2AB85F051C39282C00A68C6C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB85F041C39282C00A68C6C /* ImageCollectionViewCell.swift */; };
+		2AB85F071C3A8AF700A68C6C /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB85F061C3A8AF700A68C6C /* RecorderViewController.swift */; };
+		2AB85F0B1C3A8CC800A68C6C /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB85F0A1C3A8CC800A68C6C /* TextInputViewController.swift */; };
+		2AB85F0E1C3BF12200A68C6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB85F0D1C3BF12200A68C6C /* Assets.xcassets */; };
 		2AD09AB21C001179008FDFCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB11C001179008FDFCA /* LoginViewController.swift */; };
 		2AD09AB41C005AD6008FDFCA /* ProjectSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +71,6 @@
 		2A20DAD91BFB0207007BAB94 /* BIMSpectGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BIMSpectGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A20DADC1BFB0207007BAB94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A20DAE41BFB0207007BAB94 /* BIMSpectGithub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BIMSpectGithub.xcdatamodel; sourceTree = "<group>"; };
-		2A20DAE61BFB0207007BAB94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A20DAE91BFB0207007BAB94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A20DAEB1BFB0207007BAB94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A40A8821BFEC4B10077E751 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +81,9 @@
 		2A8D93F11C2088B600969245 /* ProjectSelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
 		2AAAC8031C1EF27600751AC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2AB85F041C39282C00A68C6C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB85F061C3A8AF700A68C6C /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		2AB85F0A1C3A8CC800A68C6C /* TextInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
+		2AB85F0D1C3BF12200A68C6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AD09AB11C001179008FDFCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2AD09AB31C005AD6008FDFCA /* ProjectSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,7 +131,7 @@
 				2A40A8821BFEC4B10077E751 /* MasterViewController.swift */,
 				2A71F1F61C2C3FAB00672CB1 /* PopOverController */,
 				2A20DAE81BFB0207007BAB94 /* LaunchScreen.storyboard */,
-				2A20DAE61BFB0207007BAB94 /* Assets.xcassets */,
+				2AB85F0D1C3BF12200A68C6C /* Assets.xcassets */,
 				2A20DAEB1BFB0207007BAB94 /* Info.plist */,
 				2A20DAE31BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld */,
 			);
@@ -164,11 +168,37 @@
 		2A71F1F61C2C3FAB00672CB1 /* PopOverController */ = {
 			isa = PBXGroup;
 			children = (
+				2AB85F081C3A8B0C00A68C6C /* photo */,
+				2AB85F091C3A8B1600A68C6C /* record */,
+				2AB85F0C1C3A8CCC00A68C6C /* note */,
+			);
+			name = PopOverController;
+			sourceTree = "<group>";
+		};
+		2AB85F081C3A8B0C00A68C6C /* photo */ = {
+			isa = PBXGroup;
+			children = (
 				2A71F1F21C2A814800672CB1 /* PhotoPopoverViewController.swift */,
 				2A1243F61C37F8B0006DF515 /* ImageViwer.swift */,
 				2AB85F041C39282C00A68C6C /* ImageCollectionViewCell.swift */,
 			);
-			name = PopOverController;
+			name = photo;
+			sourceTree = "<group>";
+		};
+		2AB85F091C3A8B1600A68C6C /* record */ = {
+			isa = PBXGroup;
+			children = (
+				2AB85F061C3A8AF700A68C6C /* RecorderViewController.swift */,
+			);
+			name = record;
+			sourceTree = "<group>";
+		};
+		2AB85F0C1C3A8CCC00A68C6C /* note */ = {
+			isa = PBXGroup;
+			children = (
+				2AB85F0A1C3A8CC800A68C6C /* TextInputViewController.swift */,
+			);
+			name = note;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +260,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AAAC8041C1EF27600751AC1 /* Main.storyboard in Resources */,
+				2AB85F0E1C3BF12200A68C6C /* Assets.xcassets in Resources */,
 				2A20DAEA1BFB0207007BAB94 /* LaunchScreen.storyboard in Resources */,
-				2A20DAE71BFB0207007BAB94 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +285,10 @@
 				2A00F8011C181B9B00B116EF /* ItemOKImage.swift in Sources */,
 				2A20DAE51BFB0207007BAB94 /* BIMSpectGithub.xcdatamodeld in Sources */,
 				2A00F80A1C181B9B00B116EF /* ItemViewImage+CoreDataProperties.swift in Sources */,
+				2AB85F0B1C3A8CC800A68C6C /* TextInputViewController.swift in Sources */,
 				2A00F8101C181B9B00B116EF /* SpotCheck+CoreDataProperties.swift in Sources */,
 				2A8D93F21C2088B600969245 /* ProjectSelectionViewControllerDelegate.swift in Sources */,
+				2AB85F071C3A8AF700A68C6C /* RecorderViewController.swift in Sources */,
 				2A00F8041C181B9B00B116EF /* Item+CoreDataProperties.swift in Sources */,
 				2A00F8001C181B9B00B116EF /* ItemOKImage+CoreDataProperties.swift in Sources */,
 				2A00F8061C181B9B00B116EF /* Project+CoreDataProperties.swift in Sources */,
